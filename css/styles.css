@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a4d1a 0%, #0d260d 100%);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Menú */
+#menu-screen {
+    background: linear-gradient(180deg, #0d3d0d 0%, #1a5c1a 50%, #0d3d0d 100%);
+    color: #90EE90;
+    text-align: center;
+    padding: 20px;
+}
+
+#menu-screen h1 {
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+#start-btn, #replay-btn {
+    background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+    border: none;
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a4d1a;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 30px 0;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s;
+}
+
+#start-btn:active, #replay-btn:active {
+    transform: scale(0.95);
+}
+
+.instructions {
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.instructions p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Pantalla de juego */
+#game-screen {
+    flex-direction: column;
+    background: #0d260d;
+}
+
+#game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    z-index: 10;
+}
+
+#level-indicator {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+#cooperation-meter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#coop-bar {
+    width: 120px;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#coop-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #ffd700, #51cf66);
+    transition: width 0.3s;
+}
+
+#game-canvas {
+    flex: 1;
+    width: 100%;
+    background: #1a4d1a;
+}
+
+/* Controles */
+#controls-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.ctrl-row {
+    display: flex;
+    gap: 5px;
+}
+
+.ctrl-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.ctrl-btn:active {
+    background: rgba(255,255,255,0.3);
+    transform: scale(0.9);
+}
+
+.action-btn {
+    background: rgba(255,215,0,0.3);
+    border-color: #FFD700;
+}
+
+#controls-p1 {
+    border-right: 2px solid rgba(255,255,255,0.2);
+    padding-right: 20px;
+}
+
+#controls-p2 {
+    padding-left: 20px;
+}
+
+/* Victoria */
+#victory-screen {
+    background: linear-gradient(180deg, #1a5c1a 0%, #FFD700 100%);
+    color: white;
+    text-align: center;
+}
+
+#victory-screen h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#final-stats {
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .ctrl-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
