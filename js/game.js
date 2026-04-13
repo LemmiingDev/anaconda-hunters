@@ -1,3 +1,45 @@
+// --- CONFIGURACIÓN ONLINE ---
+const socket = io("URL_DE_TU_SERVIDOR_AQUÍ"); // Si pruebas local, usa "http://localhost:3000"
+let miRol = null; 
+
+socket.on('initRole', (role) => {
+    miRol = role;
+    console.log("Soy el jugador: " + miRol);
+});
+
+// Escuchar al oponente
+socket.on('opponentUpdate', (data) => {
+    // Si yo soy p1, muevo al p2 con los datos que llegan
+    if (miRol === 'p1') {
+        actualizarPosicionRemota(jugador2, data);
+    } else {
+        actualizarPosicionRemota(jugador1, data);
+    }
+});
+
+function actualizarPosicionRemota(personaje, datos) {
+    personaje.x = datos.x;
+    personaje.y = datos.y;
+    personaje.estaAtacando = datos.action; 
+}
+
+// --- DENTRO DE TU BUCLE PRINCIPAL (Game Loop) ---
+function gameLoop() {
+    // Tu lógica actual de movimiento...
+    
+    // Al final del loop, enviamos nuestra posición
+    let yo = (miRol === 'p1') ? jugador1 : jugador2;
+    
+    if (miRol) {
+        socket.emit('updatePos', {
+            x: yo.x,
+            y: yo.y,
+            action: yo.estaAtacando // Ajusta según el nombre de tu variable de acción
+        });
+    }
+    
+    requestAnimationFrame(gameLoop);
+}
 class Game {
     constructor() {
         this.canvas = document.getElementById('game-canvas');
