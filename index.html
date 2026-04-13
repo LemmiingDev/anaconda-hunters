@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="menu-screen" class="screen active">
-        <h1>🐍 Cazadores de la Anaconda</h1>
-        <p>Juego cooperativo para 2 jugadores</p>
-        <button id="start-btn">INICIAR AVENTURA</button>
-        <div class="instructions">
-            <p>Jugador 1: Lado izquierdo</p>
-            <p>Jugador 2: Lado derecho</p>
-            <p>¡Cooperen para atrapar la anaconda!</p>
-        </div>
-    </div>
+    <div id="id-screen" style="background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+    <p style="color: #00ff00; font-weight: bold;">TU ID: <span id="my-id-display">Cargando...</span></p>
+    <input type="text" id="peer-id-input" placeholder="Pega el ID de tu amigo" style="padding: 10px; width: 80%; border-radius: 5px; border: none;">
+    <button id="join-btn" style="background: #2ecc71; margin-top: 10px; padding: 10px 20px;">UNIRSE A AMIGO</button>
+</div>
+
+<button id="start-btn">INICIAR AVENTURA</button>
 
     <div id="game-screen" class="screen">
         <div id="game-header">
